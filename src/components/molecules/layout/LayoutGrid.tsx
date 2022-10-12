@@ -1,6 +1,6 @@
 import { Grid, GridItem, Hide } from '@chakra-ui/react'
 import React from 'react'
-import LayoutBackground from '../../atoms/layout/LayoutBackground'
+import LayoutBackground from './LayoutBackground'
 
 interface Props {
   children: React.ReactNode
@@ -24,7 +24,11 @@ const LayoutGrid = ({ children, Aside }: Props) => {
         ]}
       >
         <Hide below="lg">
-          <GridItem colSpan={1} display={['none', 'none', 'none', 'block']}>
+          <GridItem
+            colSpan={1}
+            display={['none', 'none', 'none', 'block']}
+            alignItems="center"
+          >
             <Aside />
           </GridItem>
         </Hide>

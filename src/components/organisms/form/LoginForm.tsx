@@ -5,67 +5,66 @@ import {
   Grid,
   GridItem,
   Input,
-  Link
+  Text
 } from '@chakra-ui/react'
-import React from 'react'
-import { ButtonBaseStyle } from '../../atoms/button/Button'
-import { InputBaseStyle } from '../../atoms/input/Input'
-import InputPassword from '../../atoms/input/InputPassword'
-import Text from '../../atoms/text/Text'
+import Link from 'next/link'
+import React, { ChangeEvent } from 'react'
+import InputPassword from '../../molecules/input/InputPassword'
 
 interface props {
-  onSubmit: () => void
+  handleSubmit: (e: React.FormEvent) => void
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-const LoginForm = ({ onSubmit }: props) => {
+const LoginForm = ({ handleSubmit, handleChange }: props) => {
   return (
-    <FormControl onSubmit={onSubmit} h="100%">
-      <Grid templateRows={['repeat(5, 1fr)']} gap={6}>
-        <GridItem
-          w="100%"
-          rowSpan={3}
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          gap="1rem"
-          p="5px"
-        >
-          <Input
-            {...InputBaseStyle}
-            placeholder="Email o nombre de usuario"
-            type="text"
-          />
-          <InputPassword />
-          <Link alignSelf="flex-end">
-            <Text variant="caption" color="alternate">
-              Olvidaste tu contraseña ?
+    <form onSubmit={handleSubmit}>
+      <FormControl h="100%">
+        <Grid templateRows={['repeat(5, 1fr)']} gap={6}>
+          <GridItem
+            w="100%"
+            rowSpan={3}
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="1rem"
+            p="5px"
+          >
+            <Input
+              placeholder="Email o nombre de usuario"
+              type="text"
+              name="username"
+              onChange={handleChange}
+              variant="filled"
+            />
+            <InputPassword handleChange={handleChange} variant="filled" />
+            <Text alignSelf="flex-end" variant="link.dark">
+              <Link href="/">Olvidaste tu contraseña ?</Link>
             </Text>
-          </Link>
-        </GridItem>
-        <GridItem
-          w="100%"
-          rowSpan={1}
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          gap="5px"
-        >
-          <Flex>
-            <Text variant="caption" color="alternate">
-              No tienes cuenta ?
-            </Text>
-            <Link px="5px">
-              <Text variant="caption" color="primary" weight="bold">
-                Registrate
+          </GridItem>
+          <GridItem
+            w="100%"
+            rowSpan={1}
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="5px"
+          >
+            <Flex>
+              <Text fontSize="xs" variant="description">
+                No tienes cuenta ?
               </Text>
-            </Link>
-          </Flex>
-          <Button {...ButtonBaseStyle} w="75%">
-            <Text variant="textbutton">Iniciar Sesion</Text>
-          </Button>
-        </GridItem>
-      </Grid>
-    </FormControl>
+              <Text variant="link" fontWeight="bold" px="5px">
+                <Link href="/auth/signup">Registrate</Link>
+              </Text>
+            </Flex>
+            <Button w="75%" type="submit" variant="filled">
+              Iniciar Sesion
+            </Button>
+          </GridItem>
+        </Grid>
+      </FormControl>
+    </form>
   )
 }
 

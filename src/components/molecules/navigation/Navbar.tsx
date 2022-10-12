@@ -9,7 +9,8 @@ import {
 } from '@chakra-ui/react'
 import React from 'react'
 import { BellOutlined } from '@ant-design/icons'
-import { FitIconDark, FitIconLight } from '../../../assets/icons/FitIcon'
+import FitIcon from '../../../assets/icons/FitIcon'
+import { ColorMode } from '../../../utils/ColorMode'
 
 enum NavbarVariant {
   logged = 'logged'
@@ -42,22 +43,35 @@ const Navbar = ({
 export default Navbar
 
 const NavbarDefault = ({ colorMode }: { colorMode: string }) => {
+  const navbarIcon = () => <FitIcon colorMode={colorMode} />
+
   return (
-    <Container maxW="100%" position="sticky" top="0">
-      <Icon as={colorMode === 'light' ? FitIconDark : FitIconLight} />
+    <Container
+      maxW="100%"
+      position="sticky"
+      top="0"
+      bg={colorMode === ColorMode.Light ? 'white' : 'base'}
+    >
+      <Icon as={navbarIcon} />
     </Container>
   )
 }
 
 const NavbarLogged = ({
-  //   colorMode,
+  colorMode,
   handleClick
 }: {
   colorMode: string
   handleClick: React.MouseEventHandler
 }) => {
   return (
-    <Container maxW="100%" position="sticky" top="0" left="0">
+    <Container
+      maxW="100%"
+      position="sticky"
+      top="0"
+      left="0"
+      bg={colorMode === ColorMode.Light ? 'white' : 'inherit'}
+    >
       <Flex
         flexDirection="row"
         justifyContent="space-between"

@@ -4,14 +4,19 @@ import {
   HeartOutlined,
   HeartFilled
 } from '@ant-design/icons'
-import { Box, Button, HStack, Icon, VStack } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  HStack,
+  Icon,
+  Text,
+  useColorMode,
+  VStack
+} from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { FitIconDark } from '../../../assets/icons/FitIcon'
-import { AsideButton } from '../../atoms/button/AsideButton'
-import { ButtonBaseStyle } from '../../atoms/button/Button'
-import Text from '../../atoms/text/Text'
+import FitIcon from '../../../assets/icons/FitIcon'
 
 interface NavbarItems {
   Icon: any
@@ -20,11 +25,12 @@ interface NavbarItems {
 }
 
 const style = {
-  fontSize: '30px'
+  fontSize: '25px'
 }
 
 const AsideContent = () => {
   const router = useRouter()
+  const { colorMode, toggleColorMode } = useColorMode()
 
   const items: NavbarItems[] = [
     {
@@ -48,21 +54,23 @@ const AsideContent = () => {
       href: '/wishlist'
     }
   ]
+
+  const AsideIcon = () => <FitIcon colorMode={colorMode} />
   return (
-    <VStack w="100%" maxW="100%" alignItems="start" marginY="15px" gap="5px">
-      <Box w="100%" maxW="100%" paddingX="30px">
-        <Icon as={FitIconDark} />
+    <VStack alignItems="start" marginY="15px">
+      <Box marginY="5px" onClick={toggleColorMode}>
+        <Icon as={AsideIcon} />
       </Box>
       {items.map((el, idx) => {
         return (
           <Link href={el.href} key={idx}>
             <Box cursor="pointer">
-              <Button {...AsideButton}>
+              <Button>
                 <HStack alignItems="center" justifyContent="center">
                   <el.Icon />
                   <Text
                     variant="H6"
-                    weight={router.asPath === el.href ? 'bold' : 'normal'}
+                    w={router.asPath === el.href ? 'bold' : 'normal'}
                   >
                     {el.text}
                   </Text>
@@ -72,11 +80,6 @@ const AsideContent = () => {
           </Link>
         )
       })}
-      <Link href="/auth/signup">
-        <Button w="100%" {...ButtonBaseStyle}>
-          Registrarse
-        </Button>
-      </Link>
     </VStack>
   )
 }

@@ -1,15 +1,20 @@
-import { Button, FormControl, Grid, GridItem, Input } from '@chakra-ui/react'
-import React from 'react'
-import { ButtonBaseStyle } from '../../atoms/button/Button'
-import { InputBaseStyle } from '../../atoms/input/Input'
-import InputPassword from '../../atoms/input/InputPassword'
-import Text from '../../atoms/text/Text'
+import {
+  Button,
+  FormControl,
+  Grid,
+  GridItem,
+  Input,
+  Text
+} from '@chakra-ui/react'
+import React, { ChangeEvent } from 'react'
+import InputPassword from '../../molecules/input/InputPassword'
 
 interface props {
   onSubmit: () => void
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-const RegisterForm = ({ onSubmit }: props) => {
+const RegisterForm = ({ onSubmit, handleChange }: props) => {
   return (
     <FormControl onSubmit={onSubmit} h="100%">
       <Grid templateRows={['repeat(5, 1fr)']} gap={6}>
@@ -22,17 +27,9 @@ const RegisterForm = ({ onSubmit }: props) => {
           gap="1rem"
           p="5px"
         >
-          <Input
-            {...InputBaseStyle}
-            placeholder="Nombre de usuario"
-            type="text"
-          />
-          <Input
-            {...InputBaseStyle}
-            placeholder="Correo electronico"
-            type="email"
-          />
-          <InputPassword />
+          <Input placeholder="Nombre de usuario" type="text" />
+          <Input placeholder="Correo electronico" type="email" />
+          <InputPassword handleChange={handleChange} variant="filled" />
         </GridItem>
         <GridItem
           w="100%"
@@ -42,7 +39,7 @@ const RegisterForm = ({ onSubmit }: props) => {
           alignItems="center"
           gap="5px"
         >
-          <Button {...ButtonBaseStyle} w="75%">
+          <Button w="75%">
             <Text variant="textbutton">Registrarse</Text>
           </Button>
         </GridItem>

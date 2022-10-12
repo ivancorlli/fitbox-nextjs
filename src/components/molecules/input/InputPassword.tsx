@@ -4,19 +4,25 @@ import {
   InputGroup,
   InputRightElement
 } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons'
-import { InputBaseStyle } from './Input'
 
-const InputPassword = () => {
+interface props {
+  variant: string
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void
+}
+
+const InputPassword = ({ handleChange, variant }: props) => {
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)
   return (
     <InputGroup size="md">
       <Input
+        name="password"
+        onChange={handleChange}
         type={show ? 'text' : 'password'}
         placeholder="Ingresar contraseña"
-        {...InputBaseStyle}
+        variant={variant}
       />
       <InputRightElement width="4.5rem">
         <IconButton
@@ -26,6 +32,9 @@ const InputPassword = () => {
           icon={show ? <EyeInvisibleOutlined /> : <EyeOutlined />}
           onClick={handleClick}
           _active={{
+            bg: 'transparent'
+          }}
+          _hover={{
             bg: 'transparent'
           }}
         />

@@ -14,12 +14,12 @@ const FitIcon = ({ colorMode }: { colorMode?: string }) => {
 
 export default FitIcon
 
-export const FitIconDark = () => {
+export const FitIconLight = () => {
   return (
     <svg
       width="50"
       height="50"
-      viewBox="0 0 50 50"
+      viewBox="0 0 50 55"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -29,42 +29,42 @@ export const FitIconDark = () => {
           y="21.8137"
           width="19.4444"
           height="8.19444"
-          fill="#18206F"
+          fill="#0349FE"
         />
         <ellipse
           cx="14.3888"
           cy="25.9109"
           rx="4.16667"
           ry="4.09722"
-          fill="#18206F"
+          fill="#0349FE"
         />
         <ellipse
           cx="33.6481"
           cy="25.9109"
           rx="4.16667"
           ry="4.09722"
-          fill="#18206F"
+          fill="#0349FE"
         />
         <g filter="url(#filter0_d_19_236)">
           <rect
             width="10.1712"
             height="8.05851"
             transform="matrix(0.132156 -0.991229 0.988155 0.15346 18.1852 30.2968)"
-            fill="#18206F"
+            fill="#0349FE"
           />
         </g>
         <rect
           width="30.8355"
           height="8.28141"
           transform="matrix(0.132156 -0.991229 0.988155 0.15346 17.1064 37.565)"
-          fill="#18206F"
+          fill="#0349FE"
         />
         <ellipse
           cx="21.2408"
           cy="37.9028"
           rx="4.16667"
           ry="4.09722"
-          fill="#18206F"
+          fill="#0349FE"
         />
         <g filter="url(#filter1_d_19_236)">
           <rect
@@ -72,7 +72,7 @@ export const FitIconDark = () => {
             y="7"
             width="9.25926"
             height="8.19444"
-            fill="#18206F"
+            fill="#0349FE"
           />
         </g>
         <ellipse
@@ -80,21 +80,21 @@ export const FitIconDark = () => {
           cy="11.1209"
           rx="4.16667"
           ry="4.09722"
-          fill="#18206F"
+          fill="#0349FE"
         />
         <ellipse
           cx="12.1667"
           cy="11.1209"
           rx="4.16667"
           ry="4.09722"
-          fill="#18206F"
+          fill="#0349FE"
         />
         <rect
           x="12.2593"
           y="7.02373"
           width="26.1111"
           height="8.19444"
-          fill="#18206F"
+          fill="#0349FE"
         />
       </g>
       <defs>
@@ -187,12 +187,12 @@ export const FitIconDark = () => {
   )
 }
 
-export const FitIconLight = () => {
+export const FitIconDark = () => {
   return (
     <svg
       width="50"
       height="50"
-      viewBox="0 0 50 50"
+      viewBox="0 0 50 55"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

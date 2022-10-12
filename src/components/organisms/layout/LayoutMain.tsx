@@ -4,8 +4,8 @@ import Footbar from '../../molecules/navigation/Footbar'
 import Navbar from '../../molecules/navigation/Navbar'
 import Menubar from '../../molecules/navigation/Menubar'
 import LayoutGrid from '../../molecules/layout/LayoutGrid'
-import LayoutContent from '../../atoms/layout/LayoutContent'
-import LayoutContainer from '../../atoms/layout/LayoutContainer'
+import LayoutContent from '../../molecules/layout/LayoutContent'
+import LayoutContainer from '../../molecules/layout/LayoutContainer'
 import Aside from '../../molecules/navigation/Aside'
 
 interface Props {
@@ -18,8 +18,8 @@ const LayoutMain = ({ children }: Props) => {
   function handleMenu() {
     onOpen()
   }
+  const user = null
 
-  const user = false
   return (
     <LayoutGrid Aside={Aside}>
       <LayoutContainer>
